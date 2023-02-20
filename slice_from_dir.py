@@ -16,7 +16,7 @@ if __name__ == '__main__':
         print("Please specify --path as the root directory")
         exit(0)
 
-    output_path = os.path.join(path, "output")
+    output_path = os.path.join(path, "clips")
     if not os.path.exists(output_path):
         os.makedirs(output_path)
 
