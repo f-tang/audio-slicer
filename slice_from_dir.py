@@ -20,18 +20,18 @@ if __name__ == '__main__':
     if not os.path.exists(output_path):
         os.makedirs(output_path)
 
-    for root, dirs, files in os.walk(path):
-        for file in files:
+    for file in os.listdir(path):
+        src = os.path.join(path, file)
+        if os.path.isfile(src):
             stem, ext = os.path.splitext(file)
-            src = os.path.join(root, file)
             audio, sr = librosa.load(src, sr=None, mono=False)  # Load an audio file with librosa.
             slicer = Slicer(
                 sr=sr,
-                threshold=-40,
+                threshold=-30,
                 min_length=5000,
-                min_interval=300,
+                min_interval=1000,
                 hop_size=10,
-                max_sil_kept=500
+                max_sil_kept=1000
             )
             chunks = slicer.slice(audio)
             for i, chunk in enumerate(chunks):
