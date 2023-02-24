@@ -31,7 +31,7 @@ if __name__ == '__main__':
                 min_length=5000,
                 min_interval=1000,
                 hop_size=10,
-                max_sil_kept=1000
+                max_sil_kept=2000
             )
             chunks = slicer.slice(audio)
             for i, chunk in enumerate(chunks):
